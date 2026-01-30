@@ -1,6 +1,12 @@
 {
   "active": true,
-  "lastSync": "Jan 30, 2026 3:15 PM",
-  "currentTask": "Setting up Ghost Dashboard",
-  "uptime": "3 days, 4 hours"
+  "state": "active",
+  "lastSync": "15:45:00",
+  "states": {
+    "active": { "main": "SYSTEMS ONLINE", "sub": "All systems nominal" },
+    "thinking": { "main": "HYPERSPACE CALC", "sub": "Processing in hyperspace..." },
+    "working": { "main": "EXECUTING ORDERS", "sub": "Standing by for your command" },
+    "idle": { "main": "LOW POWER MODE", "sub": "Awaiting instructions, Master" },
+    "sleep": { "main": "BACTA RECOVERY", "sub": "Regeneration cycle in progress" }
+  }
 }

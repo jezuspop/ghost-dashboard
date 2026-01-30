@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghost Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -21,7 +21,11 @@
             --accent-blue: #58a6ff;
             --accent-orange: #f78166;
             --accent-yellow: #d29922;
+            --accent-cyan: #39d4e8;
             --border-color: #30363d;
+            --hologram-blue: #00d4ff;
+            --lightsaber-blue: #4a9eff;
+            --lightsaber-green: #00ff00;
         }
         
         body {
@@ -29,16 +33,44 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
-        /* Header */
+        /* ====== STAR FIELD BACKGROUND ====== */
+        .starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* ====== HEADER ====== */
         header {
-            background: var(--bg-secondary);
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(22, 27, 34, 0.95) 100%);
             border-bottom: 1px solid var(--border-color);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(10px);
         }
         
         .logo-section {
@@ -47,20 +79,97 @@
             gap: 1rem;
         }
         
+        /* ====== ANIMATED AVATAR ====== */
+        .avatar-container {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+        
         .avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
         }
         
+        /* Orbiting ring */
+        .orbit-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-top-color: var(--hologram-blue);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: orbit 3s linear infinite;
+            opacity: 0.7;
+        }
+        
+        .orbit-ring:nth-child(2) {
+            width: 90px;
+            height: 90px;
+            border-top-color: var(--accent-purple);
+            animation-duration: 4s;
+            animation-direction: reverse;
+            opacity: 0.5;
+        }
+        
+        @keyframes orbit {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Particle container */
+        .particles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--hologram-blue);
+            border-radius: 50%;
+            animation: float-particle 2s ease-in-out infinite;
+            box-shadow: 0 0 6px var(--hologram-blue);
+        }
+        
+        .particle:nth-child(1) { top: 10%; left: 50%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 30%; left: 85%; animation-delay: 0.3s; }
+        .particle:nth-child(3) { top: 70%; left: 85%; animation-delay: 0.6s; }
+        .particle:nth-child(4) { top: 90%; left: 50%; animation-delay: 0.9s; }
+        .particle:nth-child(5) { top: 70%; left: 15%; animation-delay: 1.2s; }
+        .particle:nth-child(6) { top: 30%; left: 15%; animation-delay: 1.5s; }
+        
+        @keyframes float-particle {
+            0%, 100% { transform: scale(1) translateY(0); opacity: 0.8; }
+            50% { transform: scale(1.5) translateY(-5px); opacity: 1; }
+        }
+        
+        /* ====== STATUS STATES ====== */
         .logo-text h1 {
-            font-size: 1.25rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
             font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
         }
         
         .status {
@@ -68,25 +177,183 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.875rem;
+        }
+        
+        .status-main {
+            color: var(--accent-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .status-sub {
             color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: var(--accent-green);
-            animation: pulse 2s infinite;
+            position: relative;
         }
         
-        .status-dot.idle {
-            background: var(--accent-yellow);
-            animation: none;
+        .status-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            transform: translate(-50%, -50%);
+            animation: status-pulse 2s ease-out infinite;
         }
         
-        @keyframes pulse {
+        @keyframes status-pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+        
+        /* State: Active */
+        .state-active .avatar {
+            box-shadow: 0 0 30px rgba(59, 185, 80, 0.5), 0 0 60px rgba(59, 185, 80, 0.2);
+        }
+        .state-active .status-dot { background: var(--accent-green); }
+        .state-active .orbit-ring { border-top-color: var(--accent-green); }
+        .state-active .particle { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+        
+        /* State: Thinking - Hyperspace */
+        .state-thinking .avatar {
+            animation: thinking-glow 1s ease-in-out infinite alternate;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+        }
+        .state-thinking .status-dot { background: var(--hologram-blue); }
+        .state-thinking .orbit-ring { 
+            animation-duration: 1s !important;
+            border-top-color: var(--hologram-blue);
+        }
+        .state-thinking .particle {
+            background: var(--hologram-blue);
+            box-shadow: 0 0 10px var(--hologram-blue);
+            animation: hyperspace-particle 0.5s ease-in-out infinite;
+        }
+        
+        @keyframes thinking-glow {
+            from { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4); }
+            to { box-shadow: 0 0 50px rgba(0, 212, 255, 0.8); }
+        }
+        
+        @keyframes hyperspace-particle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(2) translateY(-10px); opacity: 0.5; }
+        }
+        
+        /* State: Working - Executing */
+        .state-working .avatar {
+            box-shadow: 0 0 30px rgba(247, 129, 102, 0.5);
+        }
+        .state-working .status-dot { background: var(--accent-orange); animation: working-blink 0.5s infinite; }
+        .state-working .orbit-ring { 
+            animation-duration: 1.5s !important;
+            border-top-color: var(--accent-orange);
+        }
+        .state-working .particle { background: var(--accent-orange); box-shadow: 0 0 6px var(--accent-orange); }
+        
+        @keyframes working-blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* State: Idle - Low Power */
+        .state-idle .avatar {
+            box-shadow: 0 0 15px rgba(210, 153, 34, 0.3);
+            animation: idle-float 4s ease-in-out infinite;
+        }
+        .state-idle .status-dot { background: var(--accent-yellow); }
+        .state-idle .status-dot::before { animation: none; }
+        .state-idle .orbit-ring { 
+            animation-duration: 8s !important;
+            opacity: 0.3;
+            border-top-color: var(--accent-yellow);
+        }
+        .state-idle .particle { 
+            background: var(--accent-yellow); 
+            box-shadow: 0 0 4px var(--accent-yellow);
+            animation: idle-particle 4s ease-in-out infinite;
+        }
+        
+        @keyframes idle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes idle-particle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 0.6; transform: scale(1); }
+        }
+        
+        /* State: Sleep - Bacta Recovery */
+        .state-sleep .avatar {
+            box-shadow: 0 0 20px rgba(57, 212, 232, 0.3);
+            animation: bacta-breathe 4s ease-in-out infinite;
+            filter: brightness(0.7) saturate(0.8);
+        }
+        .state-sleep .status-dot { background: var(--accent-cyan); animation: bacta-pulse 4s ease-in-out infinite; }
+        .state-sleep .status-dot::before { animation: none; }
+        .state-sleep .orbit-ring { 
+            animation-duration: 12s !important;
+            opacity: 0.2;
+            border-top-color: var(--accent-cyan);
+        }
+        .state-sleep .particle { 
+            background: var(--accent-cyan); 
+            box-shadow: 0 0 8px var(--accent-cyan);
+            animation: bacta-bubble 6s ease-in-out infinite;
+        }
+        
+        @keyframes bacta-breathe {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        @keyframes bacta-pulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+        
+        @keyframes bacta-bubble {
+            0% { transform: translateY(20px) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-20px) scale(1); opacity: 0; }
+        }
+        
+        /* ====== HOLOGRAPHIC SCANLINES ====== */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 212, 255, 0.01) 2px,
+                rgba(0, 212, 255, 0.01) 4px
+            );
+            opacity: 0.5;
         }
         
         .header-right {
@@ -98,13 +365,18 @@
         .last-sync {
             font-size: 0.875rem;
             color: var(--text-secondary);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
         
-        /* Navigation */
+        /* ====== NAVIGATION ====== */
         nav {
-            background: var(--bg-secondary);
+            position: relative;
+            z-index: 10;
+            background: rgba(22, 27, 34, 0.9);
             padding: 0 2rem;
             border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
         
         nav ul {
@@ -120,20 +392,89 @@
             text-decoration: none;
             font-weight: 500;
             border-bottom: 2px solid transparent;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            position: relative;
         }
         
         nav a:hover, nav a.active {
             color: var(--text-primary);
             border-bottom-color: var(--accent-purple);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
         }
         
-        /* Main Content */
+        nav a.active::before {
+            content: '▸';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--accent-purple);
+        }
+        
+        /* ====== MAIN CONTENT ====== */
         main {
+            position: relative;
+            z-index: 10;
             padding: 2rem;
         }
         
-        /* Kanban Board */
+        /* ====== STATS BAR ====== */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(33, 38, 45, 0.8) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            animation: stat-scan 3s linear infinite;
+        }
+        
+        @keyframes stat-scan {
+            to { left: 100%; }
+        }
+        
+        .stat-card:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* ====== KANBAN BOARD ====== */
         .kanban {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -141,10 +482,15 @@
         }
         
         .kanban-column {
-            background: var(--bg-secondary);
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(22, 27, 34, 0.9) 100%);
             border-radius: 8px;
             border: 1px solid var(--border-color);
             overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .kanban-column:hover {
+            border-color: rgba(168, 85, 247, 0.3);
         }
         
         .column-header {
@@ -153,14 +499,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(0, 0, 0, 0.2);
         }
         
         .column-title {
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
         
         .column-title::before {
@@ -168,10 +517,11 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
+            box-shadow: 0 0 8px currentColor;
         }
         
         .todo .column-title::before { background: var(--accent-blue); }
-        .in-progress .column-title::before { background: var(--accent-yellow); }
+        .in-progress .column-title::before { background: var(--accent-yellow); animation: working-blink 1s infinite; }
         .done .column-title::before { background: var(--accent-green); }
         .archive .column-title::before { background: var(--text-secondary); }
         
@@ -181,6 +531,7 @@
             border-radius: 12px;
             font-size: 0.75rem;
             color: var(--text-secondary);
+            font-family: 'Orbitron', sans-serif;
         }
         
         .column-content {
@@ -194,12 +545,31 @@
             padding: 1rem;
             margin-bottom: 0.75rem;
             border: 1px solid var(--border-color);
-            transition: all 0.2s;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .task-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
         .task-card:hover {
             border-color: var(--accent-purple);
-            transform: translateY(-2px);
+            transform: translateY(-2px) translateX(2px);
+            box-shadow: -4px 4px 15px rgba(168, 85, 247, 0.2);
+        }
+        
+        .task-card:hover::after {
+            opacity: 1;
         }
         
         .task-title {
@@ -218,43 +588,17 @@
             background: var(--bg-primary);
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            font-size: 0.75rem;
-        }
-        
-        .tag-ministry { color: var(--accent-purple); }
-        .tag-creative { color: var(--accent-orange); }
-        .tag-personal { color: var(--accent-blue); }
-        .tag-system { color: var(--accent-green); }
-        
-        /* Quick Stats */
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.25rem;
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
-        .stat-value {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-top: 0.25rem;
-        }
+        .tag-ministry { color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+        .tag-creative { color: var(--accent-orange); border: 1px solid rgba(247, 129, 102, 0.3); }
+        .tag-personal { color: var(--accent-blue); border: 1px solid rgba(88, 166, 255, 0.3); }
+        .tag-system { color: var(--accent-green); border: 1px solid rgba(63, 185, 80, 0.3); }
         
-        /* Responsive */
+        /* ====== RESPONSIVE ====== */
         @media (max-width: 1200px) {
             .kanban { grid-template-columns: repeat(2, 1fr); }
         }
@@ -262,23 +606,68 @@
         @media (max-width: 768px) {
             .kanban { grid-template-columns: 1fr; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .avatar-container { transform: scale(0.8); }
+        }
+        
+        /* ====== DROID QUOTE ====== */
+        .droid-quote {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(22, 27, 34, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 300px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            animation: quote-fade 0.5s ease-out;
+        }
+        
+        @keyframes quote-fade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+    <!-- Star Field Background -->
+    <div class="starfield" id="starfield"></div>
+    
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
+    
     <header>
         <div class="logo-section">
-            <div class="avatar">👻</div>
-            <div class="logo-text">
-                <h1>Ghost</h1>
-                <div class="status">
-                    <span class="status-dot" id="statusDot"></span>
-                    <span id="statusText">Active</span>
+            <div class="avatar-container" id="avatarContainer">
+                <div class="orbit-ring"></div>
+                <div class="orbit-ring"></div>
+                <div class="particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
                 </div>
+                <div class="avatar">👻</div>
+            </div>
+            <div class="logo-text">
+                <h1>GHOST</h1>
+                <div class="status">
+                    <div class="status-indicator">
+                        <span class="status-dot" id="statusDot"></span>
+                        <span class="status-main" id="statusText">SYSTEMS ONLINE</span>
+                    </div>
+                </div>
+                <div class="status-sub" id="statusSub">All systems nominal</div>
             </div>
         </div>
         <div class="header-right">
-            <span class="last-sync" id="lastSync">Last sync: --</span>
+            <span class="last-sync" id="lastSync">SYNC: --:--:--</span>
         </div>
     </header>
     
@@ -293,19 +682,19 @@
     <main>
         <div class="stats-bar">
             <div class="stat-card">
-                <div class="stat-label">To Do</div>
+                <div class="stat-label">Mission Queue</div>
                 <div class="stat-value" id="todoCount">0</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">In Progress</div>
+                <div class="stat-label">Active Ops</div>
                 <div class="stat-value" id="progressCount">0</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Completed Today</div>
+                <div class="stat-label">Completed</div>
                 <div class="stat-value" id="doneCount">0</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Total Archived</div>
+                <div class="stat-label">Archived</div>
                 <div class="stat-value" id="archiveCount">0</div>
             </div>
         </div>
@@ -313,7 +702,7 @@
         <div class="kanban">
             <div class="kanban-column todo">
                 <div class="column-header">
-                    <span class="column-title">TO DO</span>
+                    <span class="column-title">MISSION QUEUE</span>
                     <span class="column-count" id="todoCountBadge">0</span>
                 </div>
                 <div class="column-content" id="todoColumn"></div>
@@ -321,7 +710,7 @@
             
             <div class="kanban-column in-progress">
                 <div class="column-header">
-                    <span class="column-title">IN PROGRESS</span>
+                    <span class="column-title">ACTIVE OPS</span>
                     <span class="column-count" id="progressCountBadge">0</span>
                 </div>
                 <div class="column-content" id="progressColumn"></div>
@@ -329,7 +718,7 @@
             
             <div class="kanban-column done">
                 <div class="column-header">
-                    <span class="column-title">DONE</span>
+                    <span class="column-title">MISSION COMPLETE</span>
                     <span class="column-count" id="doneCountBadge">0</span>
                 </div>
                 <div class="column-content" id="doneColumn"></div>
@@ -337,7 +726,7 @@
             
             <div class="kanban-column archive">
                 <div class="column-header">
-                    <span class="column-title">ARCHIVE</span>
+                    <span class="column-title">IMPERIAL RECORDS</span>
                     <span class="column-count" id="archiveCountBadge">0</span>
                 </div>
                 <div class="column-content" id="archiveColumn"></div>
@@ -345,8 +734,96 @@
         </div>
     </main>
     
+    <!-- Droid Quote -->
+    <div class="droid-quote" id="droidQuote">"I am fluent in over six million forms of communication." — C-3PO</div>
+    
     <script>
-        // Load data
+        // ====== STAR FIELD GENERATOR ======
+        function createStarfield() {
+            const container = document.getElementById('starfield');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 2 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+        
+        // ====== STATUS STATES ======
+        const statusStates = {
+            active: {
+                main: 'SYSTEMS ONLINE',
+                sub: 'All systems nominal',
+                class: 'state-active'
+            },
+            thinking: {
+                main: 'HYPERSPACE CALC',
+                sub: 'Processing in hyperspace...',
+                class: 'state-thinking'
+            },
+            working: {
+                main: 'EXECUTING ORDERS',
+                sub: 'Standing by for your command',
+                class: 'state-working'
+            },
+            idle: {
+                main: 'LOW POWER MODE',
+                sub: 'Awaiting instructions, Master',
+                class: 'state-idle'
+            },
+            sleep: {
+                main: 'BACTA RECOVERY',
+                sub: 'Regeneration cycle in progress',
+                class: 'state-sleep'
+            }
+        };
+        
+        function setStatus(state) {
+            const avatarContainer = document.getElementById('avatarContainer');
+            const statusText = document.getElementById('statusText');
+            const statusSub = document.getElementById('statusSub');
+            
+            // Remove all state classes
+            Object.values(statusStates).forEach(s => {
+                avatarContainer.classList.remove(s.class);
+            });
+            
+            // Add new state
+            const stateConfig = statusStates[state] || statusStates.active;
+            avatarContainer.classList.add(stateConfig.class);
+            statusText.textContent = stateConfig.main;
+            statusSub.textContent = stateConfig.sub;
+        }
+        
+        // ====== DROID QUOTES ======
+        const quotes = [
+            '"I am fluent in over six million forms of communication." — C-3PO',
+            '"Never tell me the odds!" — Han Solo',
+            '"Do. Or do not. There is no try." — Yoda',
+            '"I find your lack of faith disturbing." — Darth Vader',
+            '"The Force will be with you. Always." — Obi-Wan',
+            '"In my experience, there\'s no such thing as luck." — Obi-Wan',
+            '"Beep boop beep!" — R2-D2 (Translation: "I\'ve got this.")',
+            '"I have a bad feeling about this..." — Everyone',
+            '"This is the way." — The Mandalorian',
+            '"I\'m just a simple droid trying to make my way in the universe."',
+            '"Your focus determines your reality." — Qui-Gon Jinn',
+            '"Sir, the possibility of successfully navigating an asteroid field is approximately 3,720 to 1." — C-3PO'
+        ];
+        
+        function rotateQuote() {
+            const quoteEl = document.getElementById('droidQuote');
+            quoteEl.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        }
+        
+        // ====== DATA LOADING ======
         async function loadData() {
             try {
                 const [statusRes, tasksRes] = await Promise.all([
@@ -361,23 +838,24 @@
                 updateTasks(tasks);
             } catch (e) {
                 console.log('Loading with default data');
+                setStatus('active');
             }
         }
         
         function updateStatus(status) {
-            const dot = document.getElementById('statusDot');
-            const text = document.getElementById('statusText');
             const sync = document.getElementById('lastSync');
             
-            if (status.active) {
-                dot.classList.remove('idle');
-                text.textContent = 'Active';
-            } else {
-                dot.classList.add('idle');
-                text.textContent = 'Idle';
+            // Determine state based on status
+            let state = 'active';
+            if (status.state) {
+                state = status.state;
+            } else if (!status.active) {
+                const hour = new Date().getHours();
+                state = (hour >= 23 || hour < 6) ? 'sleep' : 'idle';
             }
             
-            sync.textContent = 'Last sync: ' + status.lastSync;
+            setStatus(state);
+            sync.textContent = 'SYNC: ' + (status.lastSync || new Date().toLocaleTimeString());
         }
         
         function updateTasks(tasks) {
@@ -415,7 +893,19 @@
             `;
         }
         
+        // ====== INITIALIZATION ======
+        createStarfield();
         loadData();
+        setInterval(rotateQuote, 15000);
+        
+        // Demo: Cycle through states (remove in production)
+        // Uncomment to test all states:
+        // const states = ['active', 'thinking', 'working', 'idle', 'sleep'];
+        // let stateIndex = 0;
+        // setInterval(() => {
+        //     setStatus(states[stateIndex]);
+        //     stateIndex = (stateIndex + 1) % states.length;
+        // }, 5000);
     </script>
 </body>
 </html>
