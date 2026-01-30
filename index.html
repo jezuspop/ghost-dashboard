@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #21262d;
+            --bg-card-hover: #30363d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent-purple: #a855f7;
+            --accent-green: #3fb950;
+            --accent-blue: #58a6ff;
+            --accent-orange: #f78166;
+            --accent-yellow: #d29922;
+            --border-color: #30363d;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.idle {
+            background: var(--accent-yellow);
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .last-sync {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--bg-secondary);
+            padding: 0 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-purple);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 2rem;
+        }
+        
+        /* Kanban Board */
+        .kanban {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .kanban-column {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        
+        .column-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .column-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .column-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        .todo .column-title::before { background: var(--accent-blue); }
+        .in-progress .column-title::before { background: var(--accent-yellow); }
+        .done .column-title::before { background: var(--accent-green); }
+        .archive .column-title::before { background: var(--text-secondary); }
+        
+        .column-count {
+            background: var(--bg-card);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .column-content {
+            padding: 1rem;
+            min-height: 400px;
+        }
+        
+        .task-card {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+        
+        .task-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+        
+        .task-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .task-meta {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .task-tag {
+            background: var(--bg-primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        
+        .tag-ministry { color: var(--accent-purple); }
+        .tag-creative { color: var(--accent-orange); }
+        .tag-personal { color: var(--accent-blue); }
+        .tag-system { color: var(--accent-green); }
+        
+        /* Quick Stats */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .kanban { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .kanban { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="avatar">👻</div>
+            <div class="logo-text">
+                <h1>Ghost</h1>
+                <div class="status">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">Active</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="last-sync" id="lastSync">Last sync: --</span>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Dashboard</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="log.html">Log</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">To Do</div>
+                <div class="stat-value" id="todoCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">In Progress</div>
+                <div class="stat-value" id="progressCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Completed Today</div>
+                <div class="stat-value" id="doneCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Archived</div>
+                <div class="stat-value" id="archiveCount">0</div>
+            </div>
+        </div>
+        
+        <div class="kanban">
+            <div class="kanban-column todo">
+                <div class="column-header">
+                    <span class="column-title">TO DO</span>
+                    <span class="column-count" id="todoCountBadge">0</span>
+                </div>
+                <div class="column-content" id="todoColumn"></div>
+            </div>
+            
+            <div class="kanban-column in-progress">
+                <div class="column-header">
+                    <span class="column-title">IN PROGRESS</span>
+                    <span class="column-count" id="progressCountBadge">0</span>
+                </div>
+                <div class="column-content" id="progressColumn"></div>
+            </div>
+            
+            <div class="kanban-column done">
+                <div class="column-header">
+                    <span class="column-title">DONE</span>
+                    <span class="column-count" id="doneCountBadge">0</span>
+                </div>
+                <div class="column-content" id="doneColumn"></div>
+            </div>
+            
+            <div class="kanban-column archive">
+                <div class="column-header">
+                    <span class="column-title">ARCHIVE</span>
+                    <span class="column-count" id="archiveCountBadge">0</span>
+                </div>
+                <div class="column-content" id="archiveColumn"></div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Load data
+        async function loadData() {
+            try {
+                const [statusRes, tasksRes] = await Promise.all([
+                    fetch('data/status.json'),
+                    fetch('data/tasks.json')
+                ]);
+                
+                const status = await statusRes.json();
+                const tasks = await tasksRes.json();
+                
+                updateStatus(status);
+                updateTasks(tasks);
+            } catch (e) {
+                console.log('Loading with default data');
+            }
+        }
+        
+        function updateStatus(status) {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            const sync = document.getElementById('lastSync');
+            
+            if (status.active) {
+                dot.classList.remove('idle');
+                text.textContent = 'Active';
+            } else {
+                dot.classList.add('idle');
+                text.textContent = 'Idle';
+            }
+            
+            sync.textContent = 'Last sync: ' + status.lastSync;
+        }
+        
+        function updateTasks(tasks) {
+            const columns = { todo: [], progress: [], done: [], archive: [] };
+            
+            tasks.forEach(task => {
+                columns[task.status].push(task);
+            });
+            
+            document.getElementById('todoColumn').innerHTML = columns.todo.map(taskCard).join('');
+            document.getElementById('progressColumn').innerHTML = columns.progress.map(taskCard).join('');
+            document.getElementById('doneColumn').innerHTML = columns.done.map(taskCard).join('');
+            document.getElementById('archiveColumn').innerHTML = columns.archive.map(taskCard).join('');
+            
+            document.getElementById('todoCount').textContent = columns.todo.length;
+            document.getElementById('progressCount').textContent = columns.progress.length;
+            document.getElementById('doneCount').textContent = columns.done.length;
+            document.getElementById('archiveCount').textContent = columns.archive.length;
+            
+            document.getElementById('todoCountBadge').textContent = columns.todo.length;
+            document.getElementById('progressCountBadge').textContent = columns.progress.length;
+            document.getElementById('doneCountBadge').textContent = columns.done.length;
+            document.getElementById('archiveCountBadge').textContent = columns.archive.length;
+        }
+        
+        function taskCard(task) {
+            return `
+                <div class="task-card">
+                    <div class="task-title">${task.title}</div>
+                    <div class="task-meta">
+                        <span class="task-tag tag-${task.category}">${task.category}</span>
+                        <span>${task.date}</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Dashboard - Activity Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #21262d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent-purple: #a855f7;
+            --accent-green: #3fb950;
+            --accent-blue: #58a6ff;
+            --accent-orange: #f78166;
+            --border-color: #30363d;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-purple), #58a6ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text h1 { font-size: 1.25rem; font-weight: 700; }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+        
+        nav {
+            background: var(--bg-secondary);
+            padding: 0 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav ul { display: flex; list-style: none; }
+        
+        nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-purple);
+        }
+        
+        main {
+            padding: 2rem;
+            max-width: 1000px;
+        }
+        
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .log-header h2 {
+            font-size: 1.25rem;
+        }
+        
+        .log-filters {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent-purple);
+            color: var(--text-primary);
+        }
+        
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        
+        .log-entry {
+            position: relative;
+            padding-left: 50px;
+            padding-bottom: 1.5rem;
+        }
+        
+        .log-dot {
+            position: absolute;
+            left: 12px;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-purple);
+        }
+        
+        .log-dot.message { border-color: var(--accent-blue); }
+        .log-dot.task { border-color: var(--accent-green); }
+        .log-dot.system { border-color: var(--accent-orange); }
+        
+        .log-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+        }
+        
+        .log-time {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .log-content {
+            line-height: 1.6;
+        }
+        
+        .log-type {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        
+        .type-message { background: rgba(88, 166, 255, 0.2); color: var(--accent-blue); }
+        .type-task { background: rgba(63, 185, 80, 0.2); color: var(--accent-green); }
+        .type-system { background: rgba(247, 129, 102, 0.2); color: var(--accent-orange); }
+        .type-cron { background: rgba(168, 85, 247, 0.2); color: var(--accent-purple); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="avatar">👻</div>
+            <div class="logo-text">
+                <h1>Ghost</h1>
+                <div class="status">
+                    <span class="status-dot"></span>
+                    <span>Active</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="log.html" class="active">Log</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="log-header">
+            <h2>Activity Log</h2>
+            <div class="log-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Messages</button>
+                <button class="filter-btn">Tasks</button>
+                <button class="filter-btn">System</button>
+            </div>
+        </div>
+        
+        <div class="timeline" id="timeline"></div>
+    </main>
+    
+    <script>
+        async function loadLog() {
+            try {
+                const res = await fetch('data/log.json');
+                const logs = await res.json();
+                renderLogs(logs);
+            } catch (e) {
+                console.log('Loading default log');
+            }
+        }
+        
+        function renderLogs(logs) {
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = logs.map(log => `
+                <div class="log-entry">
+                    <div class="log-dot ${log.type}"></div>
+                    <div class="log-card">
+                        <div class="log-time">${log.time}</div>
+                        <div class="log-content">
+                            <span class="log-type type-${log.type}">${log.type}</span>
+                            ${log.message}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        loadLog();
+    </script>
+</body>
+</html>

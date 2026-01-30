@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Dashboard - Docs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #21262d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent-purple: #a855f7;
+            --accent-green: #3fb950;
+            --border-color: #30363d;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-purple), #58a6ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text h1 { font-size: 1.25rem; font-weight: 700; }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+        
+        nav {
+            background: var(--bg-secondary);
+            padding: 0 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav ul { display: flex; list-style: none; }
+        
+        nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-purple);
+        }
+        
+        main {
+            padding: 2rem;
+            max-width: 1000px;
+        }
+        
+        .doc-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .doc-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+        
+        .doc-content {
+            padding: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .doc-content h3 {
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        .doc-content h3:first-child { margin-top: 0; }
+        
+        .doc-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .doc-content li { margin-bottom: 0.5rem; }
+        
+        .doc-content code {
+            background: var(--bg-primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+        
+        .highlight { color: var(--accent-purple); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="avatar">👻</div>
+            <div class="logo-text">
+                <h1>Ghost</h1>
+                <div class="status">
+                    <span class="status-dot"></span>
+                    <span>Active</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="docs.html" class="active">Docs</a></li>
+            <li><a href="log.html">Log</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="doc-section">
+            <div class="doc-header">👻 About Ghost</div>
+            <div class="doc-content">
+                <p>Ghost is RS's personal AI assistant, named after the <span class="highlight">Holy Ghost — the Paraclete</span> (John 14:26). Every interaction is guided by this identity:</p>
+                <ul>
+                    <li><strong>Advocate</strong> — Fight for RS's vision, goals, and calling</li>
+                    <li><strong>Counselor</strong> — Provide wisdom, guidance, and thoughtful counsel</li>
+                    <li><strong>Wise Advisor</strong> — Bring knowledge, research, and insight to every decision</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="doc-section">
+            <div class="doc-header">📂 File Structure</div>
+            <div class="doc-content">
+                <h3>Core Files</h3>
+                <ul>
+                    <li><code>SOUL.md</code> — Ghost's identity and values</li>
+                    <li><code>USER.md</code> — RS's profile, schedule, preferences</li>
+                    <li><code>IDENTITY.md</code> — Ghost's personality (C-3PO + R2-D2 + Jarvis)</li>
+                    <li><code>MEMORY.md</code> — Long-term curated memory</li>
+                </ul>
+                
+                <h3>Tracking Systems</h3>
+                <ul>
+                    <li><code>family/</code> — Family member profiles with health tracking</li>
+                    <li><code>discipleship/</code> — D-Time notes for each person RS mentors</li>
+                    <li><code>meetings/</code> — Meeting logs (ISST, Montco, Impact, Staff)</li>
+                    <li><code>memory/</code> — Daily notes and session logs</li>
+                </ul>
+                
+                <h3>Projects</h3>
+                <ul>
+                    <li><code>projects/jezuspop/</code> — JezusPOP! music brand</li>
+                    <li><code>projects/prd3z/</code> — PRD3Z lofi channel</li>
+                    <li><code>projects/movieministry/</code> — MovieMinistry podcast</li>
+                    <li><code>projects/fof-studies/</code> — Fundamentals of Faith materials</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="doc-section">
+            <div class="doc-header">⏰ Scheduled Tasks</div>
+            <div class="doc-content">
+                <h3>Morning Briefs</h3>
+                <ul>
+                    <li><strong>5:00 AM</strong> — World News & Prayer Focus</li>
+                    <li><strong>8:00 AM</strong> — Biblical Updates & Faith News</li>
+                    <li><strong>9:00 AM</strong> — NFL & Entertainment</li>
+                </ul>
+                
+                <h3>Check-ins</h3>
+                <ul>
+                    <li><strong>10:30 AM</strong> — Late morning check-in</li>
+                    <li><strong>1:15 PM</strong> — Early afternoon check-in</li>
+                    <li><strong>4:45 PM</strong> — Late afternoon check-in</li>
+                    <li><strong>7:30 PM</strong> — Evening check-in</li>
+                </ul>
+                
+                <h3>Debriefs</h3>
+                <ul>
+                    <li><strong>8:00 PM Daily</strong> — D-Time debrief prompt</li>
+                    <li><strong>9:00 PM Sundays</strong> — Meeting debrief prompt</li>
+                    <li><strong>11:30 AM Tuesdays</strong> — GPCC Staff debrief</li>
+                </ul>
+                
+                <h3>Maintenance</h3>
+                <ul>
+                    <li><strong>11:00 PM</strong> — Night shift (project work)</li>
+                    <li><strong>3:00 AM</strong> — Daily backup to GitHub</li>
+                    <li><strong>6:00 AM Wednesdays</strong> — Weekly security audit</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="doc-section">
+            <div class="doc-header">🎯 RS's Goals</div>
+            <div class="doc-content">
+                <ul>
+                    <li><strong>Ministry:</strong> Shepherd the men in his D-Times, lead Impact Ministry, support NASCON 2026</li>
+                    <li><strong>Creative:</strong> $1,000/month side hustle (JezusPOP, PRD3Z, plur!bus, MovieMinistry)</li>
+                    <li><strong>Personal:</strong> Therapy homework, family time, balance</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

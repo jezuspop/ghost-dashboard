@@ -1,0 +1,92 @@
+[
+  {
+    "time": "Jan 30, 2026 — 3:09 PM",
+    "type": "task",
+    "message": "Created Ghost Dashboard for RS to monitor activity"
+  },
+  {
+    "time": "Jan 30, 2026 — 3:03 PM",
+    "type": "task",
+    "message": "Set up debrief reminders for D-Times and meetings"
+  },
+  {
+    "time": "Jan 30, 2026 — 3:00 PM",
+    "type": "task",
+    "message": "Created meeting tracking files (ISST, Montco, Impact, GPCC Staff)"
+  },
+  {
+    "time": "Jan 30, 2026 — 2:55 PM",
+    "type": "message",
+    "message": "Debriefed Sutton D-Time — schedule management improving, Haley situation discussed"
+  },
+  {
+    "time": "Jan 30, 2026 — 2:46 PM",
+    "type": "task",
+    "message": "Created discipleship profiles for all D-Time relationships"
+  },
+  {
+    "time": "Jan 30, 2026 — 11:36 AM",
+    "type": "message",
+    "message": "Created family health tracking files (Shannon, Brysen, Gaven, Rex)"
+  },
+  {
+    "time": "Jan 30, 2026 — 11:31 AM",
+    "type": "message",
+    "message": "Provided sick care advice for Brysen (stomach bug)"
+  },
+  {
+    "time": "Jan 30, 2026 — 10:46 AM",
+    "type": "task",
+    "message": "Drafted email to Montco Leaders (Sunday meeting reminder)"
+  },
+  {
+    "time": "Jan 30, 2026 — 10:44 AM",
+    "type": "task",
+    "message": "Drafted email for Ed (Feb 8th location change)"
+  },
+  {
+    "time": "Jan 30, 2026 — 10:23 AM",
+    "type": "system",
+    "message": "Split morning brief into 3 segments (5am, 8am, 9am)"
+  },
+  {
+    "time": "Jan 30, 2026 — 10:15 AM",
+    "type": "task",
+    "message": "Completed RS voice profile from email samples"
+  },
+  {
+    "time": "Jan 30, 2026 — 9:24 AM",
+    "type": "task",
+    "message": "Processed FOF Core Studies and added to RS profile"
+  },
+  {
+    "time": "Jan 30, 2026 — 7:10 AM",
+    "type": "cron",
+    "message": "Sent morning brief to RS (Telegram)"
+  },
+  {
+    "time": "Jan 30, 2026 — 5:42 AM",
+    "type": "message",
+    "message": "Updated morning brief schedule to 5am, switched to Telegram"
+  },
+  {
+    "time": "Jan 30, 2026 — 3:00 AM",
+    "type": "cron",
+    "message": "Daily backup complete — 10 files committed to ghost-memory repo"
+  },
+  {
+    "time": "Jan 29, 2026 — 11:00 PM",
+    "type": "cron",
+    "message": "Night shift: Obsidian templates committed"
+  },
+  {
+    "time": "Jan 29, 2026 — 9:47 PM",
+    "type": "task",
+    "message": "Ghost personality integration complete (C-3PO + R2-D2 + Jarvis)"
+  },
+  {
+    "time": "Jan 29, 2026 — 9:01 PM",
+    "type": "task",
+    "message": "Obsidian vault setup with iCloud sync"
+  }
+]
