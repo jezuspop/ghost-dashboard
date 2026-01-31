@@ -9,14 +9,14 @@
   {
     "id": 2,
     "title": "Redesign Obsidian templates (per RS)",
-    "status": "todo",
+    "status": "progress",
     "category": "personal",
     "date": "Jan 30"
   },
   {
     "id": 3,
     "title": "Budget planning session with RS",
-    "status": "todo",
+    "status": "progress",
     "category": "personal",
     "date": "Jan 30"
   },
@@ -25,6 +25,34 @@
     "title": "Ghost Dashboard - deploy to GitHub Pages",
     "status": "progress",
     "category": "system",
+    "date": "Jan 30"
+  },
+  {
+    "id": 15,
+    "title": "Star Wars dashboard animations",
+    "status": "done",
+    "category": "system",
+    "date": "Jan 30"
+  },
+  {
+    "id": 16,
+    "title": "Ministry Therapy Group journal created",
+    "status": "done",
+    "category": "ministry",
+    "date": "Jan 30"
+  },
+  {
+    "id": 17,
+    "title": "Sutton D-Time logged (phone - snow day)",
+    "status": "done",
+    "category": "ministry",
+    "date": "Jan 30"
+  },
+  {
+    "id": 18,
+    "title": "Greg D-Time rescheduled to Feb 6",
+    "status": "done",
+    "category": "ministry",
     "date": "Jan 30"
   },
   {

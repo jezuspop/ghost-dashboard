@@ -1,12 +1,5 @@
 {
   "active": true,
   "state": "active",
-  "lastSync": "15:45:00",
-  "states": {
-    "active": { "main": "SYSTEMS ONLINE", "sub": "All systems nominal" },
-    "thinking": { "main": "HYPERSPACE CALC", "sub": "Processing in hyperspace..." },
-    "working": { "main": "EXECUTING ORDERS", "sub": "Standing by for your command" },
-    "idle": { "main": "LOW POWER MODE", "sub": "Awaiting instructions, Master" },
-    "sleep": { "main": "BACTA RECOVERY", "sub": "Regeneration cycle in progress" }
-  }
+  "lastSync": "21:19:00"
 }
