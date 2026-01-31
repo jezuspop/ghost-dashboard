@@ -89,16 +89,22 @@
         .avatar {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: #000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
             position: relative;
             z-index: 2;
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            overflow: hidden;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Orbiting ring */
@@ -653,7 +659,7 @@
                     <div class="particle"></div>
                     <div class="particle"></div>
                 </div>
-                <div class="avatar">👻</div>
+                <div class="avatar"><img src="ghost-avatar.png" alt="Ghost"></div>
             </div>
             <div class="logo-text">
                 <h1>GHOST</h1>
