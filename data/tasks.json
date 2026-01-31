@@ -1,12 +1,5 @@
 [
   {
-    "id": 19,
-    "title": "PRD3Z growth strategy system",
-    "status": "done",
-    "category": "creative",
-    "date": "Jan 31"
-  },
-  {
     "id": 1,
     "title": "Email integration setup",
     "status": "todo",
@@ -28,39 +21,67 @@
     "date": "Jan 30"
   },
   {
-    "id": 4,
-    "title": "Dashboard deployment",
-    "status": "progress",
+    "id": 20,
+    "title": "PRD3Z growth system (7 files)",
+    "status": "done",
+    "category": "creative",
+    "date": "Jan 31 @ 12:05am"
+  },
+  {
+    "id": 21,
+    "title": "Dashboard avatar updated",
+    "status": "done",
     "category": "system",
-    "date": "Jan 30"
+    "date": "Jan 31 @ 8:03am"
+  },
+  {
+    "id": 22,
+    "title": "Dashboard deployed to GitHub Pages",
+    "status": "done",
+    "category": "system",
+    "date": "Jan 31 @ 8:00am"
+  },
+  {
+    "id": 23,
+    "title": "Morning brief: World news delivered",
+    "status": "done",
+    "category": "system",
+    "date": "Jan 31 @ 5:01am"
+  },
+  {
+    "id": 24,
+    "title": "Morning brief: Biblical updates delivered",
+    "status": "done",
+    "category": "system",
+    "date": "Jan 31 @ 8:00am"
   },
   {
     "id": 15,
     "title": "Star Wars dashboard animations",
     "status": "done",
     "category": "system",
-    "date": "Jan 30"
+    "date": "Jan 30 @ 3:45pm"
   },
   {
     "id": 16,
     "title": "Personal journal system created",
     "status": "done",
     "category": "personal",
-    "date": "Jan 30"
+    "date": "Jan 30 @ 6:50pm"
   },
   {
     "id": 17,
     "title": "Weekly check-in logged",
     "status": "done",
     "category": "ministry",
-    "date": "Jan 30"
+    "date": "Jan 30 @ 10:00am"
   },
   {
     "id": 18,
     "title": "Meeting rescheduled",
     "status": "done",
     "category": "ministry",
-    "date": "Jan 30"
+    "date": "Jan 30 @ 9:18pm"
   },
   {
     "id": 5,
@@ -77,13 +98,6 @@
     "date": "Jan 30"
   },
   {
-    "id": 7,
-    "title": "Family tracking created",
-    "status": "done",
-    "category": "personal",
-    "date": "Jan 30"
-  },
-  {
     "id": 8,
     "title": "Morning briefs configured",
     "status": "done",
@@ -91,38 +105,31 @@
     "date": "Jan 30"
   },
   {
-    "id": 9,
-    "title": "Voice profile completed",
+    "id": 25,
+    "title": "AI best practices doc created",
     "status": "done",
     "category": "system",
-    "date": "Jan 30"
+    "date": "Jan 30 @ 9:45pm"
   },
   {
-    "id": 10,
-    "title": "Core beliefs integrated",
-    "status": "done",
-    "category": "ministry",
-    "date": "Jan 30"
+    "id": 19,
+    "title": "JezusPOP content kit (7 files)",
+    "status": "archive",
+    "category": "creative",
+    "date": "Jan 29 @ 11pm"
+  },
+  {
+    "id": 26,
+    "title": "MovieMinistry launch kit (7 files)",
+    "status": "archive",
+    "category": "creative",
+    "date": "Jan 28 @ 11pm"
   },
   {
     "id": 11,
     "title": "Personality integration",
     "status": "archive",
     "category": "system",
-    "date": "Jan 29"
-  },
-  {
-    "id": 12,
-    "title": "Notes vault setup",
-    "status": "archive",
-    "category": "personal",
-    "date": "Jan 29"
-  },
-  {
-    "id": 13,
-    "title": "Blog template created",
-    "status": "archive",
-    "category": "creative",
     "date": "Jan 29"
   },
   {
