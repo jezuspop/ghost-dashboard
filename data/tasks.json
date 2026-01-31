@@ -1,37 +1,30 @@
 [
   {
     "id": 1,
-    "title": "Set up email integration",
+    "title": "Email integration setup",
     "status": "todo",
     "category": "system",
     "date": "Jan 30"
   },
   {
     "id": 2,
-    "title": "Redesign Obsidian templates (per RS)",
+    "title": "Note templates redesign",
     "status": "progress",
     "category": "personal",
     "date": "Jan 30"
   },
   {
     "id": 3,
-    "title": "Budget planning session with RS",
+    "title": "Budget planning session",
     "status": "progress",
     "category": "personal",
     "date": "Jan 30"
   },
   {
     "id": 4,
-    "title": "Ghost Dashboard - deploy to GitHub Pages",
+    "title": "Dashboard deployment",
     "status": "progress",
     "category": "system",
-    "date": "Jan 30"
-  },
-  {
-    "id": 19,
-    "title": "PRD3Z brand strategy package created",
-    "status": "done",
-    "category": "creative",
     "date": "Jan 30"
   },
   {
@@ -43,91 +36,91 @@
   },
   {
     "id": 16,
-    "title": "Ministry Therapy Group journal created",
+    "title": "Personal journal system created",
     "status": "done",
-    "category": "ministry",
+    "category": "personal",
     "date": "Jan 30"
   },
   {
     "id": 17,
-    "title": "Sutton D-Time logged (phone - snow day)",
+    "title": "Weekly check-in logged",
     "status": "done",
     "category": "ministry",
     "date": "Jan 30"
   },
   {
     "id": 18,
-    "title": "Greg D-Time rescheduled to Feb 6",
+    "title": "Meeting rescheduled",
     "status": "done",
     "category": "ministry",
     "date": "Jan 30"
   },
   {
     "id": 5,
-    "title": "D-Time debrief system created",
+    "title": "Debrief system created",
     "status": "done",
     "category": "ministry",
     "date": "Jan 30"
   },
   {
     "id": 6,
-    "title": "Meeting tracking system created",
+    "title": "Meeting tracking system",
     "status": "done",
     "category": "ministry",
     "date": "Jan 30"
   },
   {
     "id": 7,
-    "title": "Family health tracking created",
+    "title": "Family tracking created",
     "status": "done",
     "category": "personal",
     "date": "Jan 30"
   },
   {
     "id": 8,
-    "title": "Morning brief split into 3 (5am, 8am, 9am)",
+    "title": "Morning briefs configured",
     "status": "done",
     "category": "system",
     "date": "Jan 30"
   },
   {
     "id": 9,
-    "title": "RS voice profile completed",
+    "title": "Voice profile completed",
     "status": "done",
     "category": "system",
     "date": "Jan 30"
   },
   {
     "id": 10,
-    "title": "FOF Core Beliefs integrated",
+    "title": "Core beliefs integrated",
     "status": "done",
     "category": "ministry",
     "date": "Jan 30"
   },
   {
     "id": 11,
-    "title": "Ghost personality integration (C-3PO/R2/Jarvis)",
+    "title": "Personality integration",
     "status": "archive",
     "category": "system",
     "date": "Jan 29"
   },
   {
     "id": 12,
-    "title": "Obsidian vault + iCloud sync setup",
+    "title": "Notes vault setup",
     "status": "archive",
     "category": "personal",
     "date": "Jan 29"
   },
   {
     "id": 13,
-    "title": "Blog post template created",
+    "title": "Blog template created",
     "status": "archive",
     "category": "creative",
     "date": "Jan 29"
   },
   {
     "id": 14,
-    "title": "NASCON reminders configured",
+    "title": "Event reminders configured",
     "status": "archive",
     "category": "ministry",
     "date": "Jan 29"
