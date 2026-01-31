@@ -1,5 +1,47 @@
 [
   {
+    "id": 29,
+    "title": "🔑 Google Calendar API setup",
+    "status": "todo",
+    "category": "system",
+    "date": "Mon Feb 3"
+  },
+  {
+    "id": 30,
+    "title": "🔑 YouTube API setup (yt-api-cli)",
+    "status": "todo",
+    "category": "system",
+    "date": "Mon Feb 3"
+  },
+  {
+    "id": 31,
+    "title": "🔑 ElevenLabs voice setup",
+    "status": "todo",
+    "category": "system",
+    "date": "Mon Feb 3"
+  },
+  {
+    "id": 32,
+    "title": "🎤 Record voice sample for cloning",
+    "status": "todo",
+    "category": "creative",
+    "date": "Mon Feb 3"
+  },
+  {
+    "id": 33,
+    "title": "🎨 Gather JezusPOP brand assets",
+    "status": "todo",
+    "category": "creative",
+    "date": "Mon Feb 3"
+  },
+  {
+    "id": 34,
+    "title": "🎵 Share Suno prompts that worked",
+    "status": "todo",
+    "category": "creative",
+    "date": "Mon Feb 3"
+  },
+  {
     "id": 1,
     "title": "Email integration setup",
     "status": "todo",
