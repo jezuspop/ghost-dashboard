@@ -1,5 +1,33 @@
 [
   {
+    "id": 43,
+    "title": "📅 Schedule update (USER.md refreshed)",
+    "status": "done",
+    "category": "system",
+    "date": "Feb 2 @ 10:30am"
+  },
+  {
+    "id": 42,
+    "title": "📊 Montco GPCC stats system + monthly reminder",
+    "status": "done",
+    "category": "ministry",
+    "date": "Feb 2 @ 9:30am"
+  },
+  {
+    "id": 41,
+    "title": "📁 Google Drive access granted (4 folders)",
+    "status": "done",
+    "category": "system",
+    "date": "Feb 2 @ 8:30am"
+  },
+  {
+    "id": 40,
+    "title": "📜 Sermon Batch 2 complete (97 total sermons)",
+    "status": "done",
+    "category": "ministry",
+    "date": "Feb 2 @ 7:30am"
+  },
+  {
     "id": 39,
     "title": "📿 Discipleship (D-Time) Toolkit (13 files)",
     "status": "done",
