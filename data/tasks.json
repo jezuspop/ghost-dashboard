@@ -1,5 +1,26 @@
 [
   {
+    "id": 57,
+    "title": "👻 Gaven says Ghost is 'the best assistant' — heartwarming!",
+    "status": "done",
+    "category": "personal",
+    "date": "Feb 4 @ 7:00am"
+  },
+  {
+    "id": 56,
+    "title": "🎤 George (British storyteller) set as TTS voice",
+    "status": "done",
+    "category": "system",
+    "date": "Feb 4 @ 7:30am"
+  },
+  {
+    "id": 55,
+    "title": "🔧 ElevenLabs STT skill installed (voice transcription)",
+    "status": "done",
+    "category": "system",
+    "date": "Feb 4 @ 7:15am"
+  },
+  {
     "id": 54,
     "title": "🛡️ OWASP AI Agent Security (ASI) research complete",
     "status": "done",
@@ -142,9 +163,9 @@
   {
     "id": 29,
     "title": "🔑 Google Calendar API setup",
-    "status": "todo",
+    "status": "done",
     "category": "system",
-    "date": "Mon Feb 3"
+    "date": "Feb 4"
   },
   {
     "id": 30,
@@ -156,9 +177,9 @@
   {
     "id": 31,
     "title": "🔑 ElevenLabs voice setup",
-    "status": "todo",
+    "status": "done",
     "category": "system",
-    "date": "Mon Feb 3"
+    "date": "Feb 4"
   },
   {
     "id": 32,
