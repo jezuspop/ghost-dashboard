@@ -1,5 +1,61 @@
 [
   {
+    "id": 66,
+    "title": "📿 Weldon D-Time — introduced Ghost via voice message!",
+    "status": "done",
+    "category": "ministry",
+    "date": "Feb 4 @ 11:30am"
+  },
+  {
+    "id": 65,
+    "title": "💬 Meeting with Shawn (NASCon Chat) — went great",
+    "status": "done",
+    "category": "ministry",
+    "date": "Feb 4 @ 2:00pm"
+  },
+  {
+    "id": 64,
+    "title": "🎪 ISST 2026: Research more event app options (Sched, Bizzabo, Swapcard)",
+    "status": "todo",
+    "category": "ministry",
+    "date": "Night Shift"
+  },
+  {
+    "id": 63,
+    "title": "🎪 ISST 2026: Create Canva mockups for top 2 wristband designs",
+    "status": "todo",
+    "category": "ministry",
+    "date": "Night Shift"
+  },
+  {
+    "id": 62,
+    "title": "🎪 ISST 2026: Draft worship LED programming concept doc",
+    "status": "todo",
+    "category": "ministry",
+    "date": "Night Shift"
+  },
+  {
+    "id": 61,
+    "title": "🎪 ISST 2026: Research Christian conference tech case studies",
+    "status": "todo",
+    "category": "ministry",
+    "date": "Night Shift"
+  },
+  {
+    "id": 60,
+    "title": "🎪 ISST 2026: Create budget proposal for committee presentation",
+    "status": "todo",
+    "category": "ministry",
+    "date": "Night Shift"
+  },
+  {
+    "id": 59,
+    "title": "🎪 ISST 2026: Event tech research + vendor quotes drafted",
+    "status": "done",
+    "category": "ministry",
+    "date": "Feb 4 @ 4:35pm"
+  },
+  {
     "id": 58,
     "title": "⚙️ Morning brief preferences updated (Star Wars + John)",
     "status": "done",
