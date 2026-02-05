@@ -1,5 +1,19 @@
 [
   {
+    "id": 69,
+    "title": "📿 Ministry Therapy Group session",
+    "status": "done",
+    "category": "personal",
+    "date": "Feb 5 @ 1:00pm"
+  },
+  {
+    "id": 68,
+    "title": "📿 Nick D-Time session (Thursday morning)",
+    "status": "done",
+    "category": "ministry",
+    "date": "Feb 5 @ 8:00am"
+  },
+  {
     "id": 67,
     "title": "💻 Migrated Ghost workspace to MacBook Air",
     "status": "done",
